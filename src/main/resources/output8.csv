@@ -1,0 +1,14 @@
+Amount,OriginalCurrency,TargetCurrency,ConvertedAmount,Status,Error
+1000.0,USD,EUR,940.0,Success,
+500.0,EUR,GBP,430.0,Success,
+200.0,ABC,USD,,Failed,Invalid original currency code.
+150.0,USD,XYZ,,Failed,Invalid target currency code.
+300.0,GBP,INR,31194.0,Success,
+400.0,AUD,CAD,356.29443102896937,Success,
+145.0,CAD,USD,105.93754360791127,Success,
+500.0,CHF,AUD,845.0,Success,
+600.0,USD,CHF,546.0,Success,
+700.0,JPY,USD,4.55,Success,
+1500.0,"BTC ",INR,,Failed,Invalid original currency code.
+2700.0,USD,123,,Failed,Invalid target currency should not contain numbers.
+3500.0,677,GBP,,Failed,Invalid original currency should not contain numbers.

@@ -1,0 +1,12 @@
+<TransactionData>
+  <transaction>
+    <Amount>100</Amount>
+    <OriginalCurrency>USD</OriginalCurrency>
+    <TargetCurrency>EUR</TargetCurrency>
+  </transaction>
+  <transaction>
+    <Amount>200</Amount>
+    <OriginalCurrency>GBP</OriginalCurrency>
+    <TargetCurrency>INR</TargetCurrency>
+  </transaction>
+</TransactionData>

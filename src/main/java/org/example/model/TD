@@ -1,0 +1,330 @@
+package org.example.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TransactionData {
+    private List<Transaction> transactions = new ArrayList<>(); // Initialize the list
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public static class Transaction {
+        private double amount;
+        private String currency;
+        private String targetCurrency;
+        private double convertedAmount;
+        private String status;
+        private String error;
+
+        // Getters and setters...
+
+        public double getAmount() {
+            return amount;
+        }
+
+        public void setAmount(double amount) {
+            this.amount = amount;
+        }
+
+        public String getCurrency() {
+            return currency;
+        }
+
+        public void setCurrency(String currency) {
+            this.currency = currency;
+        }
+
+        public String getTargetCurrency() {
+            return targetCurrency;
+        }
+
+        public void setTargetCurrency(String targetCurrency) {
+            this.targetCurrency = targetCurrency;
+        }
+
+        public double getConvertedAmount() {
+            return convertedAmount;
+        }
+
+        public void setConvertedAmount(double convertedAmount) {
+            this.convertedAmount = convertedAmount;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
+        public String getError() {
+            return error;
+        }
+
+        public void setError(String error) {
+            this.error = error;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+//package org.example.model;
+//
+//import java.util.List;
+//
+//public class TransactionData {
+//    private List<Transaction> transactions;
+//
+//    public List<Transaction> getTransactions() {
+//        return transactions;
+//    }
+//
+//    public void setTransactions(List<Transaction> transactions) {
+//        this.transactions = transactions;
+//    }
+//
+//    public static class Transaction {
+//        private double amount;
+//        private String currency;
+//        private String targetCurrency;
+//        private double convertedAmount;
+//        private String status;
+//        private String error;
+//
+//        // Getters
+//        public double getAmount() {
+//            return amount;
+//        }
+//
+//        public String getCurrency() {
+//            return currency;
+//        }
+//
+//        public String getTargetCurrency() {
+//            return targetCurrency;
+//        }
+//
+//        public double getConvertedAmount() {
+//            return convertedAmount;
+//        }
+//
+//        public String getStatus() {
+//            return status;
+//        }
+//
+//        public String getError() {
+//            return error;
+//        }
+//
+//        // Setters
+//        public void setAmount(double amount) {
+//            this.amount = amount;
+//        }
+//
+//        public void setCurrency(String currency) {
+//            this.currency = currency;
+//        }
+//
+//        public void setTargetCurrency(String targetCurrency) {
+//            this.targetCurrency = targetCurrency;
+//        }
+//
+//        public void setConvertedAmount(double convertedAmount) {
+//            this.convertedAmount = convertedAmount;
+//        }
+//
+//        public void setStatus(String status) {
+//            this.status = status;
+//        }
+//
+//        public void setError(String error) {
+//            this.error = error;
+//        }
+//    }
+//}
+
+
+
+//package org.example.model;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//public class TransactionData {
+//    private List<Transaction> transactions = new ArrayList<>(); // Initialize the list
+//
+//    public List<Transaction> getTransactions() {
+//        return transactions;
+//    }
+//
+//    public void setTransactions(List<Transaction> transactions) {
+//        this.transactions = transactions;
+//    }
+//
+//    public static class Transaction {
+//        private double amount;
+//        private String currency;
+//        private String targetCurrency;
+//        private double convertedAmount;
+//        private String status;
+//        private String error;
+//
+//        // Getters and setters...
+//
+//        public double getAmount() {
+//            return amount;
+//        }
+//
+//        public void setAmount(double amount) {
+//            this.amount = amount;
+//        }
+//
+//        public String getCurrency() {
+//            return currency;
+//        }
+//
+//        public void setCurrency(String currency) {
+//            this.currency = currency;
+//        }
+//
+//        public String getTargetCurrency() {
+//            return targetCurrency;
+//        }
+//
+//        public void setTargetCurrency(String targetCurrency) {
+//            this.targetCurrency = targetCurrency;
+//        }
+//
+//        public double getConvertedAmount() {
+//            return convertedAmount;
+//        }
+//
+//        public void setConvertedAmount(double convertedAmount) {
+//            this.convertedAmount = convertedAmount;
+//        }
+//
+//        public String getStatus() {
+//            return status;
+//        }
+//
+//        public void setStatus(String status) {
+//            this.status = status;
+//        }
+//
+//        public String getError() {
+//            return error;
+//        }
+//
+//        public void setError(String error) {
+//            this.error = error;
+//        }
+//    }
+//}
+//
+//
+
+
+
+
+
+
+
+
+
+//package org.example.model;
+//
+//import javax.xml.bind.annotation.XmlAccessType;
+//import javax.xml.bind.annotation.XmlAccessorType;
+//import javax.xml.bind.annotation.XmlElement;
+//import javax.xml.bind.annotation.XmlRootElement;
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//@XmlRootElement(name = "transactionData") // Specify the root element name
+//public class TransactionData {
+//    private List<Transaction> transactions = new ArrayList<>(); // Initialize the list
+//
+//    @XmlElement(name = "transaction") // Specify the element name for each transaction
+//    public List<Transaction> getTransactions() {
+//        return transactions;
+//    }
+//
+//    public void setTransactions(List<Transaction> transactions) {
+//        this.transactions = transactions;
+//    }
+//
+//    @XmlAccessorType(XmlAccessType.FIELD)
+//    public static class Transaction {
+//        private double amount;
+//        private String currency;
+//        private String targetCurrency;
+//        private double convertedAmount;
+//        private String status;
+//        private String error;
+//
+//        // Getters and setters...
+//
+//        public double getAmount() {
+//            return amount;
+//        }
+//
+//        public void setAmount(double amount) {
+//            this.amount = amount;
+//        }
+//
+//        public String getCurrency() {
+//            return currency;
+//        }
+//
+//        public void setCurrency(String currency) {
+//            this.currency = currency;
+//        }
+//
+//        public String getTargetCurrency() {
+//            return targetCurrency;
+//        }
+//
+//        public void setTargetCurrency(String targetCurrency) {
+//            this.targetCurrency = targetCurrency;
+//        }
+//
+//        public double getConvertedAmount() {
+//            return convertedAmount;
+//        }
+//
+//        public void setConvertedAmount(double convertedAmount) {
+//            this.convertedAmount = convertedAmount;
+//        }
+//
+//        public String getStatus() {
+//            return status;
+//        }
+//
+//        public void setStatus(String status) {
+//            this.status = status;
+//        }
+//
+//        public String getError() {
+//            return error;
+//        }
+//
+//        public void setError(String error) {
+//            this.error = error;
+//        }
+//    }
+//}

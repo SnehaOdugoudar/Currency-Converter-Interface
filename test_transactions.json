@@ -1,0 +1,14 @@
+{
+  "transactions": [
+    {
+      "Amount": 100,
+      "OriginalCurrency": "USD",
+      "TargetCurrency": "EUR"
+    },
+    {
+      "Amount": 200,
+      "OriginalCurrency": "GBP",
+      "TargetCurrency": "INR"
+    }
+  ]
+}

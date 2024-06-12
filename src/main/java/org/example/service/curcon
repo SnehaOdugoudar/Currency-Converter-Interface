@@ -1,0 +1,186 @@
+package org.example.service;
+
+import org.example.model.TransactionData;
+import org.example.model.TransactionData.Transaction;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+public class CurrencyConverter {
+    private static final Map<String, Double> exchangeRates = new HashMap<>();
+    private static final Set<String> visited = new HashSet<>();
+
+    static {
+        // Initialize exchange rates
+        exchangeRates.put("USD-EUR", 0.94);
+        exchangeRates.put("EUR-GBP", 0.86);
+        exchangeRates.put("GBP-INR", 103.98);
+        exchangeRates.put("AUD-CAD", 0.89);
+        exchangeRates.put("CAD-USD", 0.73);
+        exchangeRates.put("CHF-AUD", 1.69);
+        exchangeRates.put("USD-CHF", 0.91);
+        exchangeRates.put("JPY-USD", 0.0065);
+        // ... Add other rates as needed
+    }
+
+    public static void convert(TransactionData data) {
+
+        for (Transaction transaction : data.getTransactions()) {
+            double convertedAmount = dfs(transaction.getCurrency(), transaction.getTargetCurrency(), transaction.getAmount(), new HashSet<>());
+            if (convertedAmount != -1) {
+                transaction.setConvertedAmount(convertedAmount);
+                transaction.setStatus("Success");
+
+            } else {
+                transaction.setError("Invalid currency code or conversion rate not available.");
+                transaction.setStatus("Failed");
+            }
+        }
+    }
+
+    private static double dfs(String sourceCurrency, String targetCurrency, double amount, Set<String> visitedCurrencies) {
+        String key = STR."\{sourceCurrency}-\{targetCurrency}";
+
+        if (visited.contains(key)) {
+            return -1; // Detected cycle, return -1 indicating failure
+        }
+        if (exchangeRates.containsKey(key)) {
+            return amount * exchangeRates.get(key); // Found conversion rate
+        }
+        visited.add(key);
+        for (Map.Entry<String, Double> entry : exchangeRates.entrySet()) {
+            String[] currencies = entry.getKey().split("-");
+            if (currencies[0].equals(sourceCurrency)) {
+                double convertedAmount = dfs(currencies[1], targetCurrency, amount * entry.getValue(), visitedCurrencies);
+                if (convertedAmount != -1) {
+                    visited.remove(key); // Backtrack
+                    return convertedAmount;
+                }
+            }
+        }
+        visited.remove(key); // Backtrack
+        return -1; // Conversion rate not found
+    }
+}
+
+
+
+
+
+
+
+
+
+
+//package org.example.service;
+//
+//import org.example.model.TransactionData;
+//import org.example.model.TransactionData.Transaction;
+//import java.util.Map;
+//import java.util.HashMap;
+//
+//public class CurrencyConverter {
+//    private static final Map<String, Double> exchangeRates = new HashMap<>();
+//
+//
+//    static {
+//        // Initialize exchange rates
+//        exchangeRates.put("USD-EUR", 0.94);
+//        exchangeRates.put("EUR-GBP", 0.86);
+//        exchangeRates.put("GBP-INR", 103.98);
+//        exchangeRates.put("AUD-CAD", 0.89);
+//        exchangeRates.put("CAD-USD", 0.73);
+//        exchangeRates.put("CHF-AUD", 1.69);
+//        exchangeRates.put("USD-CHF", 0.91);
+//        exchangeRates.put("JPY-USD", 0.0065);
+//        // ... Add other rates as needed
+//    }
+//
+//    public static void convert(TransactionData data) {
+//        for (Transaction transaction : data.getTransactions()) {
+//            String key = STR."\{transaction.getCurrency()}-\{transaction.getTargetCurrency()}";
+//            Double rate = exchangeRates.get(key);
+//            if (rate != null) {
+//                transaction.setConvertedAmount(transaction.getAmount() * rate);
+//                transaction.setStatus("Success");
+//            } else {
+//                transaction.setError("Invalid currency code or conversion rate not available.");
+//                transaction.setStatus("Failed");
+//            }
+//        }
+//    }
+//}
+
+
+//
+//
+//package org.example.service;
+//
+//import org.example.model.TransactionData;
+//import org.example.model.TransactionData.Transaction;
+//
+//import java.util.HashMap;
+//import java.util.HashSet;
+//import java.util.Map;
+//import java.util.Set;
+//
+//public class CurrencyConverter {
+//    private static final Map<String, Double> exchangeRates = new HashMap<>();
+//    private static final Set<String> visited = new HashSet<>();
+//
+//    static {
+//        // Initialize exchange rates
+//        exchangeRates.put("USD-EUR", 0.94);
+//        exchangeRates.put("EUR-GBP", 0.86);
+//        exchangeRates.put("GBP-INR", 103.98);
+//        exchangeRates.put("AUD-CAD", 0.89);
+//        exchangeRates.put("CAD-USD", 0.73);
+//        exchangeRates.put("CHF-AUD", 1.69);
+//        exchangeRates.put("USD-CHF", 0.91);
+//        exchangeRates.put("JPY-USD", 0.0065);
+//        // ... Add other rates as needed
+//    }
+//
+//    public static void convert(TransactionData data) {
+//
+//        for (Transaction transaction : data.getTransactions()) {
+//            double ConvertedAmount = dfs(transaction.getCurrency(), transaction.getTargetCurrency(), transaction.getAmount(), new HashSet<>());
+//            if (ConvertedAmount != -1) {
+//                transaction.setConvertedAmount(ConvertedAmount);
+//                transaction.setStatus("Success");
+//
+//            } else {
+//                transaction.setError("Invalid currency code or conversion rate not available.");
+//                transaction.setStatus("Failed");
+//            }
+//        }
+//    }
+//
+//    private static double dfs(String OriginalCurrency, String TargetCurrency, double Amount, Set<String> visitedCurrencies) {
+//        String key = STR."\{OriginalCurrency}-\{TargetCurrency}";
+//
+//        if (visited.contains(key)) {
+//            return -1; // Detected cycle, return -1 indicating failure
+//        }
+//        if (exchangeRates.containsKey(key)) {
+//            return Amount * exchangeRates.get(key); // Found conversion rate
+//        }
+//        visited.add(key);
+//        for (Map.Entry<String, Double> entry : exchangeRates.entrySet()) {
+//            String[] currencies = entry.getKey().split("-");
+//            if (currencies[0].equals(OriginalCurrency)) {
+//                double ConvertedAmount = dfs(currencies[1], TargetCurrency, Amount * entry.getValue(), visitedCurrencies);
+//                if (ConvertedAmount != -1) {
+//                    visited.remove(key); // Backtrack
+//                    return ConvertedAmount;
+//                }
+//            }
+//        }
+//        visited.remove(key); // Backtrack
+//        return -1; // Conversion rate not found
+//    }
+//}
+//
+//
